@@ -1,0 +1,6 @@
+{
+    "description": "Liste tous les buckets S3 disponibles dans le compte AWS",
+    "parameters": [],
+    "command": "aws s3 ls",
+    "example": "lister_buckets.json"
+}

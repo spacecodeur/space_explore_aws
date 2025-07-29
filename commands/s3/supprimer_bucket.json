@@ -1,0 +1,11 @@
+{
+    "description": "Supprimer un bucket S3 AWS, ATTENTION, il doit être vide",
+    "parameters": [
+        {
+            "name": "bucket_s3",
+            "description": "identifiant du bucket S3 de destination"
+        }
+    ],
+    "command": "aws s3 rb s3://$1",
+    "example": "supprimer_bucket.json spacecodeuraws-mon-bucket-s3"
+}

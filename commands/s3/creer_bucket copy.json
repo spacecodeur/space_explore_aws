@@ -1,0 +1,15 @@
+{
+    "description": "Créer un nouveau bucket S3 AWS",
+    "parameters": [
+        {
+            "name": "bucket_s3",
+            "description": "identifiant du bucket S3 de destination"
+        },
+        {
+            "name": "region",
+            "description": "La région où est créé le bucket"
+        }
+    ],
+    "command": "aws s3 mb s3://$1 --region $2",
+    "example": "creer_bucket.json spacecodeuraws-mon-bucket-s3 eu-west-1"
+}

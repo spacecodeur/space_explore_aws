@@ -1,0 +1,11 @@
+{
+    "description": "Active le versioning du bucket ciblé",
+    "parameters": [
+        {
+            "name": "bucket_s3",
+            "description": "identifiant du bucket S3 de destination"
+        }
+    ],
+    "command": "aws s3api put-bucket-versioning --bucket $1 --versioning-configuration Status=Enabled",
+    "example": "lister_buckets.json"
+}

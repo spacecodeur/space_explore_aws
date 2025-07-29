@@ -1,0 +1,11 @@
+{
+    "description": "Supprimer un bucket S3 AWS, même si il n'est pas vide (force)",
+    "parameters": [
+        {
+            "name": "bucket_s3",
+            "description": "identifiant du bucket S3 de destination"
+        }
+    ],
+    "command": "aws s3 rb s3://$1 --force",
+    "example": "supprimer_bucker.json spacecodeuraws-mon-bucket-s3"
+}

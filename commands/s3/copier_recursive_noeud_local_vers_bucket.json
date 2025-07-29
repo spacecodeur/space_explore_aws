@@ -1,0 +1,19 @@
+{
+    "description": "Copie un noeud local (fichier ou dossier AVEC ses enfants) vers un bucket S3 AWS",
+    "parameters": [
+        {
+            "name": "bucket_s3",
+            "description": "identifiant du bucket S3 de destination"
+        },
+        {
+            "name": "noeud_local",
+            "description": "Chemin vers le fichier ou dossier (sans ses enfants) à copier"
+        },
+        {
+            "name": "s3_destination_path",
+            "description": "Chemin du bucket vers lequel la copie du noeud local sera déplacée"
+        }
+    ],
+    "command": "aws s3 cp $2 s3://$1/$3 --recursive",
+    "example": "copier_noeud_local_vers_bucket.json spacecodeuraws ./mon_fichier.txt dossier_s3_1/sous_dossier_s3_1"
+}

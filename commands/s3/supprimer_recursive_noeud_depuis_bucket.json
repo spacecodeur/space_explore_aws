@@ -1,0 +1,15 @@
+{
+    "description": "Supprime récursivement (fichier ou dossier avec ses enfants) un noeud situé dans un bucket S3 AWS",
+    "parameters": [
+        {
+            "name": "bucket_s3",
+            "description": "identifiant du bucket S3 de destination"
+        },
+        {
+            "name": "s3_destination_path",
+            "description": "Chemin du noeud à supprimer situé dans le bucket"
+        }
+    ],
+    "command": "aws s3 rm s3://$1/$2 --recursive",
+    "example": "supprimer_recursive_noeud_depuis_bucket.json spacecodeuraws dossier_s3_1/sous_dossier_s3_1"
+}
