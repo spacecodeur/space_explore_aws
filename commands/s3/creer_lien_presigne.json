@@ -1,0 +1,23 @@
+{
+    "description": "Génère un lien présigné sur un objet situé dans un bucket S3 AWS",
+    "parameters": [
+        {
+            "name": "bucket_s3",
+            "description": "identifiant du bucket S3 de destination"
+        },
+        {
+            "name": "s3_destination_path",
+            "description": "Chemin complet de l'objet situé dans le bucket S3"
+        },
+        {
+            "name": "expires_in",
+            "description": "Temps d'expiration en minute du lien présigné"
+        },
+        {
+            "name": "region",
+            "description": "La region à laquelle sera disponible le lien présigné généré"
+        }
+    ],
+    "command": "aws s3 presign s3://$1/$2 --expires-in $3 --region $4",
+    "example": "creer_lien_presigne.json spacecodeuraws dossier_s3_1/objetX 3600 eu-west-1"
+}
