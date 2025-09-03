@@ -1,0 +1,23 @@
+{
+    "description": "Se connecte en ssh sur un EC2 distant",
+    "parameters": [
+        {
+            "name": "ssh_private_key",
+            "description": "Chemin vers la clé ssh privée"
+        },
+        {
+            "name": "port",
+            "description": "Port utilisé pour la connection ssh"
+        },
+        {
+            "name": "ec2_user",
+            "description": "Nom du compte user EC2"
+        },
+        {
+            "name": "ec2_ip",
+            "description": "IP de l'instance EC2"
+        }
+    ],
+    "command": "ssh -i $1 -p $2 $3@$4",
+    "example": "connexion_ssh.json ~/aws_keys/okli.pem 22 ec2-user 108.129.120.34"
+}
