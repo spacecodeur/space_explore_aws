@@ -1,0 +1,27 @@
+{
+    "description": "Récupère les métadonnées d'une instance EC2 via SSH (compatible IMDSv2)",
+    "parameters": [
+        {
+            "name": "ssh_private_key",
+            "description": "Chemin vers la clé ssh privée"
+        },
+        {
+            "name": "port",
+            "description": "Port utilisé pour la connection ssh"
+        },
+        {
+            "name": "ec2_user",
+            "description": "Nom du compte user EC2"
+        },
+        {
+            "name": "ec2_ip",
+            "description": "IP de l'instance EC2"
+        },
+        {
+            "name": "metadata",
+            "description": "Type de métadonnée à récupérer (ami-id, hostname, instance-id, instance-type, local-ipv4, public-ipv4, security-groups, etc.)"
+        }
+    ],
+    "command": "ssh -i $1 -p $2 $3@$4 'TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\" -s) && curl -H \"X-aws-ec2-metadata-token: $TOKEN\" -s http://169.254.169.254/latest/meta-data/$5'",
+    "example": "get_metadata.json ~/aws_keys/okli.pem 22 ec2-user 108.129.120.34 /"
+}
