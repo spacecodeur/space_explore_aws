@@ -87,15 +87,26 @@ class CommandManager:
         print(f"Exécution: {command_to_execute}")
         
         try:
-            result = subprocess.run(command_to_execute, shell=True, 
-                                  capture_output=True, text=True)
+            # Pour les commandes interactives (ssh, nano, vim, etc.), 
+            # ne pas capturer les flux pour permettre l'interaction
+            interactive_commands = ['ssh', 'nano', 'vim', 'vi', 'emacs', 'less', 'more', 'htop', 'top']
+            is_interactive = any(cmd in command_to_execute.lower() for cmd in interactive_commands)
             
-            if result.stdout:
-                print(result.stdout)
-            if result.stderr:
-                print(f"Erreur: {result.stderr}")
-            
-            return result.returncode
+            if is_interactive:
+                # Exécution interactive - pas de capture des flux
+                result = subprocess.run(command_to_execute, shell=True)
+                return result.returncode
+            else:
+                # Exécution normale avec capture des flux
+                result = subprocess.run(command_to_execute, shell=True, 
+                                      capture_output=True, text=True)
+                
+                if result.stdout:
+                    print(result.stdout)
+                if result.stderr:
+                    print(f"Erreur: {result.stderr}")
+                
+                return result.returncode
         except Exception as e:
             print(f"Erreur lors de l'exécution: {e}")
             return 1
@@ -158,15 +169,26 @@ class CommandManager:
         print(f"Exécution: {command_to_execute}")
         
         try:
-            result = subprocess.run(command_to_execute, shell=True, 
-                                  capture_output=True, text=True)
+            # Pour les commandes interactives (ssh, nano, vim, etc.), 
+            # ne pas capturer les flux pour permettre l'interaction
+            interactive_commands = ['ssh', 'nano', 'vim', 'vi', 'emacs', 'less', 'more', 'htop', 'top']
+            is_interactive = any(cmd in command_to_execute.lower() for cmd in interactive_commands)
             
-            if result.stdout:
-                print(result.stdout)
-            if result.stderr:
-                print(f"Erreur: {result.stderr}")
-            
-            return result.returncode
+            if is_interactive:
+                # Exécution interactive - pas de capture des flux
+                result = subprocess.run(command_to_execute, shell=True)
+                return result.returncode
+            else:
+                # Exécution normale avec capture des flux
+                result = subprocess.run(command_to_execute, shell=True, 
+                                      capture_output=True, text=True)
+                
+                if result.stdout:
+                    print(result.stdout)
+                if result.stderr:
+                    print(f"Erreur: {result.stderr}")
+                
+                return result.returncode
         except Exception as e:
             print(f"Erreur lors de l'exécution: {e}")
             return 1
