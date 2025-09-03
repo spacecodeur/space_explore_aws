@@ -90,7 +90,8 @@ class CommandManager:
             # Pour les commandes interactives (ssh, nano, vim, etc.), 
             # ne pas capturer les flux pour permettre l'interaction
             interactive_commands = ['ssh', 'nano', 'vim', 'vi', 'emacs', 'less', 'more', 'htop', 'top']
-            is_interactive = any(cmd in command_to_execute.lower() for cmd in interactive_commands)
+            first_word = command_to_execute.strip().split()[0].lower() if command_to_execute.strip() else ""
+            is_interactive = first_word in interactive_commands
             
             if is_interactive:
                 # Exécution interactive - pas de capture des flux
@@ -172,7 +173,8 @@ class CommandManager:
             # Pour les commandes interactives (ssh, nano, vim, etc.), 
             # ne pas capturer les flux pour permettre l'interaction
             interactive_commands = ['ssh', 'nano', 'vim', 'vi', 'emacs', 'less', 'more', 'htop', 'top']
-            is_interactive = any(cmd in command_to_execute.lower() for cmd in interactive_commands)
+            first_word = command_to_execute.strip().split()[0].lower() if command_to_execute.strip() else ""
+            is_interactive = first_word in interactive_commands
             
             if is_interactive:
                 # Exécution interactive - pas de capture des flux
